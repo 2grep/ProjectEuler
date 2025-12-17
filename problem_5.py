@@ -22,6 +22,22 @@ def least_cm(n):
                 values[j] = counts[j]
     return values
 
+import math
+from functools import reduce
+
+def lcm(a, b):
+    """Returns the Least Common Multiple of two numbers."""
+    if a == 0 or b == 0:
+        return 0
+    return abs(a * b) // math.gcd(a, b)
+
+def smallest_divisible_by_range(n):
+    """Calculates the smallest number divisible by all numbers from 1 to n."""
+    return reduce(lcm, range(1, n + 1))
+
+# Result for numbers 1 to 20
+result = smallest_divisible_by_range(20)
+print(f"The smallest positive number divisible by all numbers from 1 to 20 is: {result}")
 
 
 
