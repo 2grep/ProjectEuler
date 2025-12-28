@@ -3,6 +3,7 @@
 # 
 # How many such routes are there through a 20 x 20 grid?
 
+# Brute force solution
 def generate_grid(n,m):
     grid = []
     for i in range(0,n+1):
@@ -24,3 +25,12 @@ def generate_path_tree(n,m):
     return grid
 
 print(max(max(generate_path_tree(20,20))))
+
+# There is a simple combinatoric solution: this is a simple 'n choose k' problem.
+# There are 40 steps (20 right and 20 down) for all solutions and 20 of those must
+# be down (or 20 must be right). So this would be 40 choose 20 or 40! / (20! * 20!)
+
+import math
+
+# Calculate the number of combinations
+print(math.comb(40, 20))
