@@ -3,7 +3,10 @@
 # 
 # How many such routes are there through a 20 x 20 grid?
 
-# Brute force solution
+# Brute force solution. The number of paths to reach any lattice point is the
+# sum of the number of paths to reach the cell left and the cell above. There
+# is only one path to reach any cell on the top and left borders.
+
 def generate_grid(n,m):
     grid = []
     for i in range(0,n+1):
@@ -15,10 +18,13 @@ def generate_grid(n,m):
 
 def generate_path_tree(n,m):
     grid = generate_grid(n,m)
+    # populate the top row with 1s
     for i in range(0,n+1):
         grid[i][0] = 1
+    # populate the left column with 1s
     for j in range(0,m+1):
         grid[0][j] = 1
+    # fill in the rest of the grid
     for i in range(1,n+1):
         for j in range(1,m+1):
             grid[i][j] = grid[i-1][j] + grid[i][j-1]
