@@ -16,6 +16,38 @@
 # Label each day with the month - catch leap years
 # label each day with the day-of-week
 
+# Significant strategy change: rather than enumerating every data and iterating 
+# through them to find the interesting datas, just count those dates as they
+# are generated, and store on the minimal necessary counters.
+
+year = 1901
+months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
+days_of_week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+day_of_week = "Monday"
+julian_day = 1
+days_in_month = months[0][1]
+sequential_day = 1
+day_date = [1900,1,1,"January",1,"Monday"]
+for i in range (first_year, last_year):
+    julian_day = 1
+    month = "January"
+    if i % 4 == 0:
+        d = 366
+        months.insert(1,["February", 29])
+    else:
+        d = 365
+        months.insert(1,["February", 28])
+    for j in range (0,len(months)):
+        month = months[j]
+        for k in range(0,len(month)):
+            sequential_day += sequential_day
+            julian_day += julian_day
+
+for range  (days of month)
+increment day_of_week
+if day_of_week == "Sunday" and day_of_momth = 1:
+    Sundays += 1
+
 calendar = []
 for i in range(1901,2001):
     calendar.append(i)
