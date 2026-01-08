@@ -28,20 +28,28 @@ julian_day = 1
 days_in_month = months[0][1]
 sequential_day = 1
 day_date = [1900,1,1,"January",1,"Monday"]
-for i in range (first_year, last_year):
-    julian_day = 1
-    month = "January"
-    if i % 4 == 0:
-        d = 366
+
+def months_feb_correct(year):
+    print(year)
+    months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
+    if year % 4 == 0:
         months.insert(1,["February", 29])
     else:
-        d = 365
         months.insert(1,["February", 28])
+    return months
+
+def days(year,days_from_beginning):
+    julian_day = 1
+    month = "January"
+    months = months_feb_correct(i)
     for j in range (0,len(months)):
         month = months[j]
-        for k in range(0,len(month)):
-            sequential_day += sequential_day
+        for k in range(0,months[i][1]):
+            days_from_beginning += days_from_beginning
             julian_day += julian_day
+            print(julian_day)
+
+
 
 for range  (days of month)
 increment day_of_week
