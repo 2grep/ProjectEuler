@@ -34,15 +34,15 @@ def sunday_firsts(year, days_from_beginning):
     day_of_week = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     julian_day = 0 # not necessary but keeping it for debugging
     month = []
-        for j in range (0,len(months)):
+    for j in range (0,len(months)):
         month = months[j]
-        for k in range(1,months[j][1]+1):
-            days_from_beginning += 1
-            julian_day += 1
-            day_date = [days_from_beginning,year,julian_day,month[0],k,day_of_week[int(days_from_beginning) % 7]]
-            if day_date[5] == "Sunday" and day_date[4] == 1:
-                first_sundays.append(day_date)
-            result = [first_sundays, days_from_beginning]
+    for k in range(1,months[j][1]+1):
+        days_from_beginning += 1
+        julian_day += 1
+        day_date = [days_from_beginning,year,julian_day,month[0],k,day_of_week[int(days_from_beginning) % 7]]
+        if day_date[5] == "Sunday" and day_date[4] == 1:
+            first_sundays.append(day_date)
+        result = [first_sundays, days_from_beginning]
     return result
 
 def main():
