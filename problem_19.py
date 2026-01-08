@@ -20,7 +20,7 @@
 # through them to find the interesting datas, just count those dates as they
 # are generated, and store on the minimal necessary counters.
 
-def months_feb_correct(year):
+def feb_correct(year):
     months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
     if year % 4 == 0:
         months.insert(1,["February", 29])
@@ -30,12 +30,11 @@ def months_feb_correct(year):
 
 def sunday_firsts(year, days_from_beginning):
     first_sundays = []
-    months = months_feb_correct(year)
+    months = feb_correct(year)
     day_of_week = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-    julian_day = 0
-    month = "January"
-    months = months_feb_correct(year)
-    for j in range (0,len(months)):
+    julian_day = 0 # not necessary but keeping it for debugging
+    month = []
+        for j in range (0,len(months)):
         month = months[j]
         for k in range(1,months[j][1]+1):
             days_from_beginning += 1
