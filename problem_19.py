@@ -20,17 +20,7 @@
 # through them to find the interesting datas, just count those dates as they
 # are generated, and store on the minimal necessary counters.
 
-year = 1901
-months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
-days_of_week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-day_of_week = "Monday"
-julian_day = 1
-days_in_month = months[0][1]
-sequential_day = 1
-day_date = [1900,1,1,"January",1,"Monday"]
-
 def months_feb_correct(year):
-    print(year)
     months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
     if year % 4 == 0:
         months.insert(1,["February", 29])
@@ -38,35 +28,32 @@ def months_feb_correct(year):
         months.insert(1,["February", 28])
     return months
 
-def days(year,days_from_beginning):
-    julian_day = 1
+def sunday_firsts(year, days_from_beginning):
+    first_sundays = []
+    months = months_feb_correct(year)
+    day_of_week = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    julian_day = 0
     month = "January"
-    months = months_feb_correct(i)
+    months = months_feb_correct(year)
     for j in range (0,len(months)):
         month = months[j]
-        for k in range(0,months[i][1]):
-            days_from_beginning += days_from_beginning
-            julian_day += julian_day
-            print(julian_day)
+        for k in range(1,months[j][1]+1):
+            days_from_beginning += 1
+            julian_day += 1
+            day_date = [days_from_beginning,year,julian_day,month[0],k,day_of_week[int(days_from_beginning) % 7]]
+            if day_date[5] == "Sunday" and day_date[4] == 1:
+                first_sundays.append(day_date)
+            result = [first_sundays, days_from_beginning]
+    return result
 
+def main():
+    first_sundays = []
+    days_from_beginning = 0
+    for year in range(1901,2001):
+        result = sunday_firsts(year, days_from_beginning)
+        first_sundays.append(result[0])
+        days_from_beginning = int(result[1])
+    first_sundays = [item for sublist in first_sundays for item in sublist]
+    return first_sundays
 
-
-for range  (days of month)
-increment day_of_week
-if day_of_week == "Sunday" and day_of_momth = 1:
-    Sundays += 1
-
-calendar = []
-for i in range(1901,2001):
-    calendar.append(i)
-    if i % 4 == 0:
-        d = 366
-    else:
-        d = 365
-    days = [n+1 for n in range(0,d)]
-    calendar.append(days)
-
-
-
-
-
+main()
