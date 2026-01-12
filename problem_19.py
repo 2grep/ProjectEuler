@@ -20,6 +20,8 @@
 # through them to find the interesting datas, just count those dates as they
 # are generated, and store on the minimal necessary counters.
 
+# build the correct calendar for the year under consideration
+
 def feb_correct(year):
     months = [["January",31], ["March", 31], ["April", 30], ["May", 31], ["June", 30], ["July", 31], ["August", 31], ["September", 30], ["October", 31], ["November", 30], ["December", 31]]
     if year % 4 == 0:
@@ -27,6 +29,9 @@ def feb_correct(year):
     else:
         months.insert(1,["February", 28])
     return months
+
+# Construct the properties for each day of the year under consideration, then
+# evaluate them for 1st Sundays, accumulate and return those, with the evidence.
 
 def sunday_firsts(year, days_from_beginning):
     first_sundays = []
@@ -44,6 +49,8 @@ def sunday_firsts(year, days_from_beginning):
             first_sundays.append(day_date)
         result = [first_sundays, days_from_beginning]
     return result
+
+# run the algorithm for all years under consideration
 
 def main():
     first_sundays = []
